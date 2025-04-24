@@ -59,16 +59,16 @@
         </div>
 
 
-        <div class="container mx-auto gap-8 mt-8 grid px-4 sm:px-6 lg:px-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" >   
+        <div class="container mx-auto gap-8 mt-8 px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" >   
             <div class="w-full bg-white border border-gray-200 rounded-lg shadow product-card">
                 <img class="w-full h-auto rounded-t-lg" src="/assets/images/1655187299_5e7330f63c595a614199.avif" alt="" />
                 <div class="p-5">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Orange Juice</h5>
-                    <p class="mb-3 font-normal text-gray-700">100% pure orange juice, no added sugar</p>
+                    <h5 id="productName" class="mb-2 text-2xl font-bold tracking-tight text-gray-900"></h5>
+                    <p id="productDescription" class="mb-3 font-normal text-gray-700"></p>
                     <div class="flex justify-between">
                         <div class="flex items-center">
-                            <p class="text-red-500 font-bold text-xl me-2">$30</p>
-                            <p class="text-gray-300 line-through">$20</p>
+                            <p id="discountPrice" class="text-red-500 font-bold text-xl me-2"></p>
+                            <p id="originPrice" class="text-gray-300 line-through"></p>
                         </div>
                         <button onclick="addToCart()" class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700  whitespace-nowrap overflow-hidden text-ellipsis">
                             Add to cart
