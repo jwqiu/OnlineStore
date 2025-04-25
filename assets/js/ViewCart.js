@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
         cartCount = parseInt(storedCount); 
         document.getElementById("cart-count").textContent = cartCount;
         document.getElementById("cart-count").classList.remove("hidden");
+        document.querySelector(".totalItems").innerText = cartCount;
+
     }
     
     let Items = JSON.parse(localStorage.getItem("cartItems")) || [];
@@ -18,6 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const list = document.getElementById("Items-list");
         list.style.display = "flex"; 
+        
+        let subTotal=0
 
         Items.forEach(item => {
 
@@ -29,12 +33,28 @@ document.addEventListener('DOMContentLoaded', () => {
             card.querySelector(".productDescription").innerText = item.description;
             card.querySelector(".discountPrice").innerText = "$" + item.discountPrice;
             card.querySelector(".originPrice").innerText = "$" + item.originPrice;
+            subTotal=subTotal+item.discountPrice
+            document.querySelector(".subTotal").innerText = "$"+ subTotal;
 
             itemslist.appendChild(card);
         });
+
+        const deliveryRadios = document.querySelectorAll('input[name="delivery"]');
+        const deliveryDisplay = document.getElementById("delivery-fee");
+        const totalPrice = document.getElementById("totalPrice");
+        
+        deliveryRadios.forEach(radio => {
+            radio.addEventListener('change', () => {
+              const deliveryFee = parseInt(radio.value);
+              deliveryDisplay.textContent = `$${deliveryFee}`;
+              totalPrice.textContent = `$${subTotal + deliveryFee}`;
+            });
+        });
+        const selectedRadio = document.querySelector('input[name="delivery"]:checked'); 
+        const initialDeliveryFee = selectedRadio ? parseInt(selectedRadio.value) : 0; 
+        deliveryDisplay.textContent = `$${initialDeliveryFee}`; 
+        totalPrice.textContent = `$${subTotal + initialDeliveryFee}`;
     }
-
-
 });
 
 function clearCart(){

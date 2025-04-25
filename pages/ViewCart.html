@@ -23,8 +23,8 @@
                         </a>
                         <div class="hidden lg:flex space-x-8">
                             <!-- <a href="#" class="text-gray-400 hover:text-gray-900">Home</a> -->
-                            <a href="#" class="text-gray-400 hover:text-gray-900">Today's Deals</a>
-                            <a href="#" class="text-gray-400 hover:text-gray-900">New Releases</a>
+                            <!-- <a href="#" class="text-gray-400 hover:text-gray-900">Today's Deals</a>
+                            <a href="#" class="text-gray-400 hover:text-gray-900">New Releases</a> -->
                         </div>
                     </div>
             
@@ -55,11 +55,14 @@
         </nav>
         
         <div class="container flex flex-col-reverse mx-auto gap-x-8 px-4 sm:px-6 lg:px-8 mt-8 lg:flex-row">
-            <div class="w-full lg:w-[650px]">
+            <div class="w-full lg:w-[600px]">
                 <div class="flex flex-col flex-1 gap-y-8" id="Items-list">
                     <div id="product-template" class="flex rounded-lg p-4 bg-white hidden border border-gray-300">
-                        <img class="h-48 w-auto rounded-lg" src="/assets/images/1655187299_5e7330f63c595a614199.avif" alt="" />
-                        <div class="px-4 rounded-r-lg ">
+                        <div class="">
+                            <img class="h-48 w-auto rounded-lg" src="/assets/images/1655187299_5e7330f63c595a614199.avif" alt="" />
+
+                        </div>
+                        <div class="px-4 rounded-r-lg flex-1">
                             <h5 id="" class="productName mb-2 text-2xl font-bold tracking-tight text-gray-900"></h5>
                             <p id="" class="productDescription mb-2 font-normal text-gray-700"></p>
                             <div class="flex items-center mb-2">
@@ -67,39 +70,11 @@
                                 <p id="" class="originPrice text-gray-300 line-through"></p>
                             </div>
                             <p class="text-gray-900 font-normal mb-2">Quantity: 1</p>
-                            <hr class="">
-                            <p class="text-gray-900 font-normal mb-2 mt-2">Delivery Method:</p>
- 
-                            <div class="space-y-3 font-normal">
-                                <div class="space-y-3">
-                                    <label class="flex items-center justify-between text-gray-500">
-                                      <div class="flex items-center gap-2">
-                                        <input type="radio" name="delivery" value="pickup" class="accent-blue-600" />
-                                        <span>In-store Pickup</span>
-                                      </div>
-                                      <span class="text-red-600 font-bold">$0</span>
-                                    </label>
-                                  
-                                    <label class="flex items-center justify-between text-gray-500">
-                                      <div class="flex items-center gap-2">
-                                        <input type="radio" name="delivery" value="store" class="accent-blue-600" />
-                                        <span>Convenience Store Pickup</span>
-                                      </div>
-                                      <span class="text-red-600 font-bold">$60</span>
-                                    </label>
-                                  
-                                    <label class="flex items-center justify-between text-gray-500">
-                                      <div class="flex items-center gap-2">
-                                        <input type="radio" name="delivery" value="home" class="accent-blue-600" checked />
-                                        <span>Home Delivery</span>
-                                      </div>
-                                      <span class="text-red-600 font-bold">$120</span>
-                                    </label>
-                                  </div>
-                                </div>
-                            <button class="mt-4 w-32 items-center px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700  whitespace-nowrap overflow-hidden text-ellipsis">
+                            <button class="mt-2 w-32 items-center px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700  whitespace-nowrap overflow-hidden text-ellipsis">
                                 Delete
                             </button>
+                            
+
                         </div>
                     </div>
                 </div>
@@ -107,12 +82,61 @@
             
                 
             <div class="self-start w-full flex-1 bg-white border border-gray-200 rounded-lg shadow p-5 mb-8">
+                <!-- <p class="text-gray-900 font-normal mb-2 mt-2">Delivery Method:</p> -->
+                <h5 class="text-2xl font-bold mb-6">Choose Delivery Method:</h5>
+
+                <div class="font-normal">
+                    <div class="space-y-1">
+                        <label class="flex items-center justify-between text-gray-500 ">
+                            <div class="flex items-center gap-2">
+                            <input type="radio" name="delivery" value="0" class="accent-blue-600" />
+                            <span class="text-base">In-store Pickup</span>
+                            </div>
+                            <span class="font-bold text-base">$0</span>
+                        </label>
+                        
+                        <label class="flex items-center justify-between text-gray-500">
+                            <div class="flex items-center gap-2">
+                            <input type="radio" name="delivery" value="60" class="accent-blue-600" checked />
+                            <span>Convenience Store Pickup</span>
+                            </div>
+                            <span class="font-bold">$60</span>
+                        </label>
+                        
+                        <label class="flex items-center justify-between text-gray-500">
+                            <div class="flex items-center gap-2">
+                            <input type="radio" name="delivery" value="120" class="accent-blue-600"  />
+                            <span>Home Delivery</span>
+                            </div>
+                            <span class="font-bold">$120</span>
+                        </label>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
                 <h5 class="text-2xl font-bold mb-6">Order Summary:</h5>
-                <h5 class="text-xl">12 items</h5>
-                <h5 class="text-xl">Subtotal: $xx</h5>
-                <h5 class="text-xl mb-4">Delivery: $xx</h5>
-                <hr>
-                <h5 class="text-xl mt-4 mb-6">Total: $xx</h5>
+                <div class="space-y-1">
+                    <div class="flex justify-between text-gray-500">
+                        <h5 class="text-base ">Total Items:</h5>
+                        <h5 class="text-base totalItems font-bold">0</h5>
+                    </div>
+                    <div class="flex justify-between text-gray-500">
+                        <h5 class="text-base">Subtotal:</h5>
+                        <h5 class="text-base subTotal font-bold">$0</h5>
+                    </div>
+                    <div class="flex justify-between text-gray-500">
+                        <h5 class="text-base mb-4">Delivery:</h5>
+                        <h5 id="delivery-fee" class="text-base font-bold">$0</h5>
+                    </div>
+                    <hr>
+                    <div class="flex justify-between">
+                        <h5 class="text-2xl mt-4 mb-6 font-bold">Total:</h5>
+                        <h5 id="totalPrice" class="text-2xl text-red-500 font-bold">$0</h5>
+    
+                    </div>
+                </div>
+                
                 <div class="flex gap-x-4">
                     <button class=" max-w-[250px] items-center w-full px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700  whitespace-nowrap overflow-hidden text-ellipsis">
                         Check Out
