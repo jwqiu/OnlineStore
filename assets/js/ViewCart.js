@@ -4,13 +4,24 @@ function clearCart(){
     window.location.reload();
 }
 
-// function deleteItem(id) {
-//     let updatedItems = Items.filter(item => item.id !== id);
-//     localStorage.setItem('cartItems', JSON.stringify(updatedItems));
-
-//     Items = updatedItems;
-//     renderProducts();
-// }
+function deleteItem(id) {
+    let Items = JSON.parse(localStorage.getItem("cartItems")) || [];
+    let updatedItems = Items.filter(item => item.id !== id);
+    localStorage.setItem('cartItems', JSON.stringify(updatedItems));
+    let cartCount = updatedItems.length;  
+    localStorage.setItem('cartCount', cartCount);
+    loadCartCount()
+    countTotalItems()
+    countSubTotal()
+    initialTotalFee()
+    // Items = updatedItems;
+    // countSubTotal()
+    // countTotalItems()
+    renderCartItems();
+    // loadCartCount();
+    // calculateTotalFee();
+    
+}
 
 function renderCartItems(){
     let Items = JSON.parse(localStorage.getItem("cartItems")) || [];
@@ -57,11 +68,11 @@ function renderCartItems(){
     }
 }
 
-let subTotal=0
+// let subTotal=0
 
 function countSubTotal(){
     let Items = JSON.parse(localStorage.getItem("cartItems")) || [];
-
+    let subTotal=0
     let cartMap = {};
         Items.forEach(item => {
             if (cartMap[item.id]) {
@@ -76,6 +87,7 @@ function countSubTotal(){
     });
 
     document.querySelector(".subTotal").innerText = "$"+ subTotal;
+    return subTotal;
 
 }
 
@@ -85,6 +97,7 @@ function initialTotalFee(){
     const totalPrice = document.getElementById("totalPrice");
     const initialDeliveryFee = selectedRadio ? parseInt(selectedRadio.value) : 0; 
     deliveryDisplay.textContent = `$${initialDeliveryFee}`; 
+    const subTotal=countSubTotal();
     totalPrice.textContent = `$${subTotal + initialDeliveryFee}`;
 }
 
@@ -95,9 +108,10 @@ function calculateTotalFee(){
     
     deliveryRadios.forEach(radio => {
         radio.addEventListener('change', () => {
-          const deliveryFee = parseInt(radio.value);
-          deliveryDisplay.textContent = `$${deliveryFee}`;
-          totalPrice.textContent = `$${subTotal + deliveryFee}`;
+            const subTotal=countSubTotal();
+            const deliveryFee = parseInt(radio.value);
+            deliveryDisplay.textContent = `$${deliveryFee}`;
+            totalPrice.textContent = `$${subTotal + deliveryFee}`;
         });
     });
 
@@ -124,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCartItems()
     calculateTotalFee()
     countTotalItems()
-    
+
     }
 );
 

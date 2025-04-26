@@ -82,6 +82,11 @@ function loadCartCount(){
         document.getElementById("cart-count").textContent = cartCount;
         document.getElementById("cart-count").classList.remove("hidden");
     }
+    else{
+        document.getElementById("cart-count").classList.add("hidden");
+    }
+    cartCount = storedCount;
+    return cartCount;
 }
 
 function incrementCartCount(){
